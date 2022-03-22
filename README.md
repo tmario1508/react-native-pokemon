@@ -2,7 +2,7 @@
 - Install dependences
   - npm install
 - Init project with metro
-  -npx react-native start
+  - npx react-native start
 - Run app in android
   - npx react-native run-android
 
