@@ -8,6 +8,7 @@
 
 
 ## Screenshots
-![Home](src/assets/img/home.PNG)
+![Home](src/assets/img/home.PNG =50x50)
+
 ![Home](src/assets/img/detail.PNG)
 
