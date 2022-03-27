@@ -20,3 +20,10 @@ export const POKEMON_TYPE_COLORS = {
     dark: "#705848",
     fairy: "#EE99AC",
 };
+
+export const colors = {
+    water: "#6890F0",
+    mhiteLite: "#EAECEE",
+};
+
+export const FAVORITE_STORAGE = "favorites"

@@ -1,12 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { SafeAreaView, Text } from "react-native";
+import { SafeAreaView, TouchableOpacity, StyleSheet } from "react-native";
 import { getPokemonDetailByUrlApi, getPokemonsApi } from "../api/pokemon";
-import PokemonList from "../components/PokemonList"
+import PokemonList from "../components/Pokemon/PokemonList"
+import useAuth from '../hooks/useAuth'
+import NoLogged from '../components/Account/NoLogged'
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {faPlusCircle} from '@fortawesome/free-solid-svg-icons';
+import { useNavigation } from "@react-navigation/native";
 
 export default function Account() {
 
   const [pokemons, setPokemons] = useState([]);
   const [nextUrl, setNextUrl] = useState(null);
+  const { auth } = useAuth();
+
+  const navigation = useNavigation();
 
   useEffect( () => {
     (async () => {
@@ -38,8 +46,24 @@ export default function Account() {
   }
 
   return (
-    <SafeAreaView>
-      <PokemonList pokemons={pokemons} loadPokemons={loadPokemons} isNext={nextUrl} />
-    </SafeAreaView>
+    !auth ? <NoLogged /> :  
+      <SafeAreaView>
+        <PokemonList pokemons={pokemons} loadPokemons={loadPokemons} isNext={nextUrl} />
+        <TouchableOpacity style={styles.touchableOpacityStyle} onPress={() => navigation.navigate("AddPoke")}>
+          <FontAwesomeIcon icon={faPlusCircle} size={70} color='#8E44AD' />
+        </TouchableOpacity>
+      </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  touchableOpacityStyle: {
+    position: 'absolute',
+    width: 50,
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    right: 30,
+    bottom: 30,
+  },
+})

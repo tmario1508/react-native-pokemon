@@ -8,13 +8,14 @@ export default function PokemonHeader(props) {
   const color = getColorsByTypePokemon(type);
 
   const bgStyle = [{backgroundColor: color, ...styles.bg}]
+  
   return (
     <>
       <View style={bgStyle} />
       <SafeAreaView style={styles.content}>
         <View style={styles.header} >
           <Text style={styles.name}>{capitalize(name)}</Text>
-          <Text style={styles.order}>#{`${order}`.padStart(3, 0)}</Text>
+          <Text style={styles.order}># {`${order}`.padStart(3, 0)}</Text>
         </View>
         <View style={styles.contentImg}>
           <Image source={{ uri: image }} style={styles.image} />

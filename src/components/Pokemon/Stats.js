@@ -6,12 +6,26 @@ export default function Stats(props) {
   const { stats } = props;
 
   const barStyle = (num) => {
-    const color = num > 49 ? '#3463ffff' : "#9acb94";
+    let color = ""
+    if(num < 45 ){
+      color = "#C0392B"
+    }
+    if(num > 44 && num < 60){
+      color = "#F1C40F"
+    }
+    if(num > 59 && num < 70){
+      color = "#17A589"
+    } 
+    if(num > 69){
+      color = "#2471A3"
+    }
+
     return {
       backgroundColor: color,
       width: `${num}%`
     }
   }
+  
   return (
     <View style={styles.content}>
       <Text style={styles.title}>Base Stats</Text>

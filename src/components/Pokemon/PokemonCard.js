@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, Image, TouchableWithoutFeedback } from 'react-native'
 import React from 'react'
-import getColorByTypePokemon from '../utils/getColorByPokemonType'
+import getColorByTypePokemon from '../../utils/getColorByPokemonType'
 import { capitalize } from 'lodash';
 import { useNavigation } from "@react-navigation/native"
 

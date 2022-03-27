@@ -1,4 +1,4 @@
-import { View, ScrollView, Text } from 'react-native'
+import { ScrollView } from 'react-native'
 import React, { useState, useEffect } from "react";
 
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
@@ -8,15 +8,18 @@ import { getPokemonDetailsApi } from '../api/pokemon'
 import PokemonHeader from "../components/Pokemon/Header"
 import Type from "../components/Pokemon/Type"
 import Stats from '../components/Pokemon/Stats';
+import FavoriteIcon from '../components/Favorite/FavoriteIcon';
+import useAuth from '../hooks/useAuth'
 
 export default function Pokemon(props) {
   const { navigation, route: { params } } = props;
 
   const [poke, setPokemon] = useState(null)
+  const { auth } = useAuth();
 
   useEffect(() => {
     navigation.setOptions({
-      headerRight: () => null,
+      headerRight: () => auth ? <FavoriteIcon id={poke?.id} name={poke?.name}/> : undefined,
       headerLeft: () => <FontAwesomeIcon 
                           icon={faArrowLeft}
                           color="#fff"
@@ -25,7 +28,7 @@ export default function Pokemon(props) {
                           onPress={navigation.goBack}
                         />
     })
-  }, [navigation, params])
+  }, [navigation, params, poke])
 
   useEffect(() => {
     (async () => {
