@@ -1,4 +1,4 @@
-package com.pockets;
+package com.mtorrese.pockets;
 
 import com.facebook.react.ReactActivity;
 

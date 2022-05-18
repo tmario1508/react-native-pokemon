@@ -7,6 +7,7 @@ import { colors } from '../../utils/constanst'
 import { useFocusEffect } from "@react-navigation/native"
 import { size } from 'lodash';
 import { getPokemonFavoriteApi } from '../../api/favorite';
+import {userDetails} from '../../utils/userDB';
 
 export default function UserData() {
   const { auth, logout} = useAuth();
@@ -24,14 +25,15 @@ export default function UserData() {
       })()
     }, [])
   );
+
   return (
     <View styles={styles.content}>
       <View style={styles.titleBlock}>
         <Text style={styles.titleBi}>Bienvenido</Text>
-        <Text style={styles.title}>{`${auth.firstName} ${auth.lastName}`}</Text>
+        <Text style={styles.title}>{`${auth.first_name} ${auth.last_name}`}</Text>
       </View>
       <View style={styles.dataContent}>
-        <ItemMenu title={"Name: "} text={`${auth.firstName} ${auth.lastName}`} icon={faUser} />
+        <ItemMenu title={"Name: "} text={`${auth.first_name} ${auth.last_name}`} icon={faUser} />
         <ItemMenu title={"User: "} text={`${auth.username}`} icon={faCheck} />
         <ItemMenu title={"Email: "} text={`${auth.email}`} icon={faEnvelope} />
         <ItemMenu title={"Favorites: "} text={`${total} pokemons`} icon={faHeart} />

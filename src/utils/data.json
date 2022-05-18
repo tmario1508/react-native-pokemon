@@ -1,0 +1,84 @@
+[
+  {
+    "country": "Estados Unidos",
+    "img": "https://cdn-icons-png.flaticon.com/512/940/940207.png",
+    "cities": [
+        {
+            "id": 1,
+            "name": "Houston",
+            "key": "HOT"
+       },
+       {
+            "id": 2,
+            "name": "Dallas",
+            "key": "DAL"
+        },
+        {
+            "id": 3,
+            "name": "Los Angeles",
+            "key": "LAN"
+        },
+        {
+            "id": 4,
+            "name": "Chicago",
+            "key": "CHI"
+        }
+    ],
+    "id": 1
+  },
+  {
+    "country": "México",
+    "img": "https://cdn-icons-png.flaticon.com/512/330/330433.png",
+    "cities": [
+       {
+            "id": 5,
+            "name": "CDMX",
+            "key": "CDMX"
+       },
+       {
+             "id": 6,
+            "name": "Guadalajara",
+            "key": "GDL"
+        },
+        {
+            "id": 7,
+            "name": "Monterrey",
+            "key": "MTY"
+        },
+        {
+            "id": 8,
+            "name": "Cancún",
+            "key": "CAN"
+        }
+     ],
+    "id": 2
+  },
+  {
+    "country": "Colombia",
+    "img": "https://cdn-icons-png.flaticon.com/512/555/555617.png",
+    "cities": [
+        {
+            "id": 9,
+            "name": "Medellin",
+            "key": "MED"
+        },
+        {
+            "id": 10,
+            "name": "Barranquilla",
+            "key": "BRQ"
+        },
+        {
+            "id": 11,
+            "name": "Cali",
+            "key": "CAI"
+        },
+        {
+            "id": 12,
+            "name": "Cartagena",
+            "key": "CAN"
+        }
+    ],
+    "id": 3
+  }
+]
+

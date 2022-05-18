@@ -1,4 +1,4 @@
-package com.pockets;
+package com.mtorrese.pockets;
 
 import android.app.Application;
 import android.content.Context;

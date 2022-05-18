@@ -49,7 +49,7 @@ export default function Account() {
     !auth ? <NoLogged /> :  
       <SafeAreaView>
         <PokemonList pokemons={pokemons} loadPokemons={loadPokemons} isNext={nextUrl} />
-        <TouchableOpacity style={styles.touchableOpacityStyle} onPress={() => navigation.navigate("AddPoke")}>
+        <TouchableOpacity style={styles.touchableOpacityStyle} onPress={() => navigation.navigate("Cities")}>
           <FontAwesomeIcon icon={faPlusCircle} size={70} color='#8E44AD' />
         </TouchableOpacity>
       </SafeAreaView>

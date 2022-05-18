@@ -1,5 +1,9 @@
 export const HOST_API = "https://pokeapi.co/api/v2"
 
+export const API_ENDPOINT = "https://randomuser.me/api/?seed=1&page=1&results=20"
+
+export const API_CITIES = "https://620e98baec8b2ee28326dc72.mockapi.io/data/places"
+
 export const POKEMON_TYPE_COLORS = {
     normal: "#A8A878",
     fighting: "#C03028",

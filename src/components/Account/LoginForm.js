@@ -9,15 +9,19 @@ import {
 import React, {useState} from 'react';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
-import {user, userDetails} from '../../utils/userDB';
 import useAuth from '../../hooks/useAuth';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {faLockOpen, faEye, faUser} from '@fortawesome/free-solid-svg-icons';
+import {faLockOpen, faEye, faEnvelope} from '@fortawesome/free-solid-svg-icons';
+import auth from '@react-native-firebase/auth';
+import {useNavigation} from '@react-navigation/native';
 
 export default function LoginForm() {
   const [error, setError] = useState('');
   const [visible, setVisible] = useState(true);
   const {login} = useAuth();
+  const [errorText, setErrorText] = useState("");
+
+  const navigation = useNavigation();
 
   const img = require('../../assets/img/google.png');
 
@@ -28,14 +32,28 @@ export default function LoginForm() {
     onSubmit: formValues => {
       setError('');
       const {userName, password} = formValues;
-      if (userName !== user.username || password !== user.password) {
-        setError('Usuario o contraseña incorrectos');
-        Alert.alert('Login error', `${error}`);
-      } else {
-        login(userDetails);
-      }
+      auth()
+        .signInWithEmailAndPassword(userName, password)
+        .then((user) => {
+          console.log(user.user.email);
+          if (user) {
+            login(user.user.email);
+            navigation.navigate("Pokedex")
+          }
+        })
+        .catch((er) => {
+          if (er.code === "auth/invalid-email") {
+            setErrorText(er.message)
+          }
+          else if (er.code === "auth/user-not-found") {
+            setErrorText("No User Found");
+          } else {
+            setErrorText("Please check your email id or password");
+          }
+        });
     },
   });
+
 
   const reloadedVisible = () => {
     setVisible(prev => !prev);
@@ -53,7 +71,7 @@ export default function LoginForm() {
           onChangeText={text => formik.setFieldValue('userName', text)}
         />
         <View style={styles.icon}>
-          <FontAwesomeIcon icon={faUser} size={20} color="#5499C7" />
+          <FontAwesomeIcon icon={faEnvelope} size={20} color="#5499C7" />
         </View>
       </View>
       <Text style={styles.errors}>{formik.errors.userName}</Text>
